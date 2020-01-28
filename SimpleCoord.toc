@@ -1,6 +1,6 @@
 ## Interface: 80300
-## Author: Hegwin
+## Author: Hegwin Xiao Wang
 ## Title: SimpleCoord
-## Notes: Show current player's and mouseover's coordinate on the big map
+## Notes: Show current player's and mouseover's coordinate on the World Map
 
 SimpleCoord.lua
