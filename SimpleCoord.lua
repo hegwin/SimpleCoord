@@ -10,7 +10,7 @@ WorldMapFrame:HookScript("OnUpdate", function(self, elapsed)
 
     local pwmid, wmid = C_Map.GetBestMapForUnit("player"), WorldMapFrame:GetMapID()
     -- local position = C_Map.GetPlayerMapPosition(pwmid, "player")
-    RunScript('position = C_Map.GetPlayerMapPosition(0, "player")')
+    RunScript('position = C_Map.GetPlayerMapPosition(pwmid, "player")')
     local pinfo = C_Map.GetMapInfo(pwmid)
     local finfo = C_Map.GetMapInfo(wmid)
     local x, y = WorldMapFrame:GetNormalizedCursorPosition()
