@@ -1,9 +1,4 @@
 WorldMapFrame:HookScript("OnUpdate", function(self, elapsed)
-  local inInstance, instanceType = IsInInstance()
-  if inInstance then
-    return true
-  end
-
   self.elapsed = (self.elapsed or 0) + elapsed
   if self.elapsed > .2 then
     if not self.locationTip then
@@ -23,7 +18,12 @@ WorldMapFrame:HookScript("OnUpdate", function(self, elapsed)
     local finfo = C_Map.GetMapInfo(wmid)
     local x, y = WorldMapFrame:GetNormalizedCursorPosition()
 
-    self.locationTip:SetText(format("玩家: %s %d,%d  当前: %s %d,%d", pinfo.name, position.x*100, position.y*100, finfo.name,x*100, y*100))
+    if position then
+      self.locationTip:SetText(format("玩家: %s %d,%d  鼠标: %s %d,%d", pinfo.name, position.x * 100, position.y * 100, finfo.name, x * 100, y * 100))
+    else
+      self.locationTip:SetText(format("鼠标: %s %d,%d", finfo.name, x * 100, y * 100))
+    end
+
     self.elapsed = 0
   end
 end)
