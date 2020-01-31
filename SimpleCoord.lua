@@ -1,4 +1,9 @@
 WorldMapFrame:HookScript("OnUpdate", function(self, elapsed)
+  local inInstance, instanceType = IsInInstance()
+  if inInstance then
+    return true
+  end
+
   self.elapsed = (self.elapsed or 0) + elapsed
   if self.elapsed > .2 then
     if not self.locationTip then
@@ -10,7 +15,10 @@ WorldMapFrame:HookScript("OnUpdate", function(self, elapsed)
 
     local pwmid, wmid = C_Map.GetBestMapForUnit("player"), WorldMapFrame:GetMapID()
     -- local position = C_Map.GetPlayerMapPosition(pwmid, "player")
-    RunScript('position = C_Map.GetPlayerMapPosition(pwmid, "player")')
+    -- if not position then
+    --   local position = { x = 0, y = 0 }
+    -- end
+    RunScript('position = C_Map.GetPlayerMapPosition(0, "player")')
     local pinfo = C_Map.GetMapInfo(pwmid)
     local finfo = C_Map.GetMapInfo(wmid)
     local x, y = WorldMapFrame:GetNormalizedCursorPosition()
